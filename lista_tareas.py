@@ -2,8 +2,13 @@ import tkinter as tk
 from tkinter import simpledialog, messagebox
 from pathlib import Path
 import json
+import sys
 
-ARCHIVO_TAREAS = Path(__file__).resolve().parent / "tareas.json"
+if getattr(sys, "frozen", False):
+    CARPETA_BASE = Path(sys.executable).resolve().parent
+else:
+    CARPETA_BASE = Path(__file__).resolve().parent
+ARCHIVO_TAREAS = CARPETA_BASE / "tareas.json"
 
 #Listas de tareas pendientes y completadas
 pendientes = []
